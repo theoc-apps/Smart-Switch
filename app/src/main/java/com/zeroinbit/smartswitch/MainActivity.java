@@ -4,16 +4,25 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.belkin.wemo.localsdk.WeMoSDKContext;
+
+import java.util.ArrayList;
 
 
+public class MainActivity extends ActionBarActivity {
 
-public class MainActivity extends Activity {
+    private WeMoSDKContext mWeMoSDKContext = null;
+    private Button mRefreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +33,8 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+
     }
 
 
@@ -43,6 +54,10 @@ public class MainActivity extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_refresh){
+
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -51,6 +66,8 @@ public class MainActivity extends Activity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+
+
         public PlaceholderFragment() {
         }
 
@@ -58,6 +75,10 @@ public class MainActivity extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            //TextView all = (TextView) rootView.findViewById(R.id.all);
+            //all.setText(udns.toString());
+
             return rootView;
         }
     }
